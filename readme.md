@@ -1,12 +1,14 @@
 # Animated GIF to multicolor C64 sprite converter
 
-GIFtoC64Sprites is a tool for converting a GIF animation to Commodore 64 multicolor sprites. Based on the idea by Jeff Harris and his [NodeJS code](https://github.com/jeff-1amstudios/gif-to-c64-sprites), this .NET tool adds support for [multicolor sprites](https://www.c64-wiki.com/wiki/Sprite#Color_settings).
+GIFtoC64Sprites is a Windows tool for converting a GIF animation to Commodore 64 multicolor sprites. Based on the idea by [Jeff Harris](https://github.com/jeff-1amstudios/gif-to-c64-sprites) and his NodeJS code, this .NET tool adds support for [multicolor sprites](https://www.c64-wiki.com/wiki/Sprite#Color_settings).
+
+## Download
+
+Download the latest [release](https://github.com/kristofferjalen/gif-to-c64-sprites/releases).
 
 ## Usage
 
-The source GIF animation needs to be resized to 48 x 42 pixels and color reduced to four colors. These four colors are selected by you.
-
-Use [Gifsicle](https://www.lcdf.org/gifsicle/) for this task: First create a color map by picking four colors from the [Commodore 64 palette](https://www.c64-wiki.com/wiki/Color). Choose the colors that you think match the animation best. Then create a textfile `colors.col` with the RGB values of these four colors:
+The source GIF animation needs to be resized to 48 x 42 pixels and color reduced to four colors. These four colors are selected by you. Use [Gifsicle](https://www.lcdf.org/gifsicle/) for this task: First pick four colors from the [Commodore 64 palette](https://www.c64-wiki.com/wiki/Color) that you think match the animation best. Then create a textfile `colors.col` with the RGB values of these four colors:
 
 ```
 ; Note that each of these colors must be represented in the C64 palette
@@ -16,7 +18,7 @@ Use [Gifsicle](https://www.lcdf.org/gifsicle/) for this task: First create a col
 0 136 255       ; Light blue ($0e)
 ```
 
-Then execute Gifsicle:
+Execute Gifsicle:
 
 `gifsicle.exe --use-colormap colors.col --resize 48x42 --output prepared.gif input.gif`
 
@@ -53,7 +55,7 @@ sta $d029   // Sprite #2 color
 sta $d02a   // Sprite #3 color
 ```
 
-The folder `/c64-sample-app` contains a working minimal example, based on the original example, but written in [Kick Assembler](http://www.theweb.dk/KickAssembler/Main.html#frontpage) syntax.
+The folder `c64-sample-app` contains a working minimal example, based on the original example, but written in [Kick Assembler](http://www.theweb.dk/KickAssembler/Main.html#frontpage) syntax.
 
 Here is the application running in VICE:
 
